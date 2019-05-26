@@ -54,10 +54,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Volumes/Nicolas P/projects/ciphers_new/clion_proj"
+CMAKE_SOURCE_DIR = "/Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Volumes/Nicolas P/projects/ciphers_new/clion_proj/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj/cmake-build-debug"
 
 #=============================================================================
 # Target rules for target CMakeFiles/clion_proj.dir
@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = "/Volumes/Nicolas P/projects/ciphers_new/clion_proj/cmake-bui
 CMakeFiles/clion_proj.dir/all:
 	$(MAKE) -f CMakeFiles/clion_proj.dir/build.make CMakeFiles/clion_proj.dir/depend
 	$(MAKE) -f CMakeFiles/clion_proj.dir/build.make CMakeFiles/clion_proj.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Volumes/Nicolas P/projects/ciphers_new/clion_proj/cmake-build-debug/CMakeFiles" --progress-num=1,2,3 "Built target clion_proj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj/cmake-build-debug/CMakeFiles" --progress-num=1,2,3 "Built target clion_proj"
 .PHONY : CMakeFiles/clion_proj.dir/all
 
 # Include target in all.
@@ -76,9 +76,9 @@ all: CMakeFiles/clion_proj.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/clion_proj.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Volumes/Nicolas P/projects/ciphers_new/clion_proj/cmake-build-debug/CMakeFiles" 3
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj/cmake-build-debug/CMakeFiles" 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/clion_proj.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Volumes/Nicolas P/projects/ciphers_new/clion_proj/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj/cmake-build-debug/CMakeFiles" 0
 .PHONY : CMakeFiles/clion_proj.dir/rule
 
 # Convenience name for target.

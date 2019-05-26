@@ -1,6 +1,8 @@
-//
-// Created by Nicolas Petras on 26/05/2019.
-//
+/*
+ * Author Nicolas Petras
+ * Version: 0.1 (Development)
+ * Version Date: 26/05/2019
+ */
 
 #include <string.h>
 #include <ctype.h>
@@ -8,22 +10,20 @@
 #include "ciphers.h"
 
 /*
- * This function applies the caesar cipher on the plaintext 'p' using the key 'k'
+ * This function applies the caesar cipher on the plaintext 'p' using the key 'k'.
  *
  * Parameters:
  * p: plaintext to be enciphered
- * k: integer key determining the degree and direction of the shift - this key has to be in the range: -25-25 - negative
- * values indicate a left shift and positive values indicate a right shift
+ * k: integer key determining the degree and direction of the shift - this key has to be in the range: -25 to 25. Negat-
+ * ive values indicate a left shift and positive values indicate a right shift
  *
  * Returns: ciphertext - plaintext 'p' enciphered using the key 'k' provided
  */
 char *caesar_cipher(char *p, int k)
 {
-    char c[P_MAX];
-    char *c_ptr;    // ciphertext
-    int p_len;  // length of p
+    char c[P_MAX];  // ciphertext
+    int p_len;      // length of p
 
-    c_ptr = c;
 
     p_len = (int)strlen(p);
 
@@ -35,15 +35,15 @@ char *caesar_cipher(char *p, int k)
             // depending if character is uppercase or lowercase a different calculation will take place
             if(isupper(p[i]))
             {
-                c[i] = (char)(p[i] - 65);       /* get the alpha-numeric index of uppercase letter p[i]
-                                                   (ascii code 65 = a) */
+                c[i] = (char)(p[i] - 65);       // get the alpha-numeric index of uppercase letter p[i] by subtracting
+                                                // the ascii code for 'A' from the uppercase letter
                 c[i] = (char)((c[i] + k) % 26); // apply letter shift, ensuring that the character stays a letter
                 c[i] = (char)(c[i] + 65);       // get the new character ascii value
 
             } else if(islower(p[i]))
             {
-                c[i] = (char)(p[i] - 97);       /* get the alpha-numeric index of lowercase letter p[i]
-                                                   (ascii code 65 = a) */
+                c[i] = (char)(p[i] - 97);       // get the alpha-numeric index of lowercase letter p[i] by subtracting
+                                                // the ascii code for 'a' from the lowercase letter
                 c[i] = (char)((c[i] + k) % 26); // apply letter shift, ensuring that the character stays a letter
                 c[i] = (char)(c[i] + 97);       // get the new character ascii value
             } else // error - shouldn't occur
@@ -53,5 +53,25 @@ char *caesar_cipher(char *p, int k)
             }
         }
     }
+    return c;
+}
+
+
+/*
+ * This function applies the vigenere cipher on the plaintext 'p' using the key 'k'
+ *
+ * Parameters:
+ * p: plaintext to be enciphered
+ * k: alphabetical string key
+ *
+ * Returns: ciphertext - plaintext 'p' enciphered using the key 'k' provided
+ */
+char *vigenere_cipher(char *k, char *p)
+{
+    char c[P_MAX];  // ciphertext
+    int p_len;      // length of the plaintext
+
+
+
     return c;
 }

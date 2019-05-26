@@ -1,4 +1,4 @@
-# Install script for directory: /Volumes/Nicolas P/projects/ciphers_new/clion_proj
+# Install script for directory: /Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Volumes/Nicolas P/projects/ciphers_new/clion_proj/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Volumes/Nicolas P/projects/ciphers_project/gitrepo/ciphers2/clion_proj/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
