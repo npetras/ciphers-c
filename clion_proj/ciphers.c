@@ -9,6 +9,10 @@
 #include <stdio.h>
 #include "ciphers.h"
 
+char *convertAlphaToNumKey(char *k, int p_len);
+
+void printOutAsciiKey(const char *k, int k_len);
+
 /*
  * This function applies the caesar cipher on the plaintext 'p' using the key 'k'.
  *
@@ -19,9 +23,8 @@
  *
  * Returns: ciphertext - plaintext 'p' enciphered using the key 'k' provided
  */
-char *caesar_cipher(char *p, int k)
+void caesar_cipher(int k, char *p, char *c)
 {
-    char c[P_MAX];  // ciphertext
     int p_len;      // length of p
 
 
@@ -53,7 +56,6 @@ char *caesar_cipher(char *p, int k)
             }
         }
     }
-    return c;
 }
 
 
@@ -66,12 +68,77 @@ char *caesar_cipher(char *p, int k)
  *
  * Returns: ciphertext - plaintext 'p' enciphered using the key 'k' provided
  */
-char *vigenere_cipher(char *k, char *p)
+void vigenere_cipher(char *k, char *p, char *c)
 {
-    char c[P_MAX];  // ciphertext
     int p_len;      // length of the plaintext
+    int k_len;      // length of the key
+
+    p_len = (int)strlen(p);
+    k_len = (int)strlen(k);
+
+    strcpy(k, convertAlphaToNumKey(k, p_len));
+    printOutAsciiKey(k, k_len);                 // debug statement
 
 
+    for (int i = 0; i < p_len; i++)
+    {
+        // only apply cipher to alphabetic characters
+        if (isalpha(p[i]))
+        {
+            // depending if character is uppercase or lowercase a different calculation will take place
+            if(isupper(p[i]))
+            {
+                c[i] = (char)(p[i] - 65);       // get the alpha-numeric index of uppercase letter p[i] by subtracting
+                // the ascii code for 'A' from the uppercase letter
+                c[i] = (char)((c[i] + k[i]) % 26); // apply letter shift, ensuring that the character stays a letter
+                c[i] = (char)(c[i] + 65);       // get the new character ascii value
 
-    return c;
+            } else if(islower(p[i]))
+            {
+                c[i] = (char)(p[i] - 97);           // get the alpha-numeric index of lowercase letter p[i] by subtracting
+                                                    // the ascii code for 'a' from the lowercase letter
+                c[i] = (char)((c[i] + k[i]) % 26);  // apply letter shift, ensuring that the character stays a letter
+                c[i] = (char)(c[i] + 97);           // get the new character ascii value
+            } else // error - shouldn't occur
+            {
+                fprintf(stderr, "error ciphers:vigenere_cipher - non-alphabetical character being considered, by caesar"
+                        "cipher ");
+            }
+        }
+    }
+}
+
+void printOutAsciiKey(const char *k, int k_len)
+{
+    printf("Vigenere Numeric key: ");
+
+    for (int i = 0; i < k_len; i++)
+    {
+        printf("%d", k[i]);
+    }
+}
+
+char *convertAlphaToNumKey(char *k, int p_len)
+{
+    // convert alphabetic key to numeric key
+    for (int i = 0; i < p_len; i++)
+    {
+        if(isalpha(k[i]))
+        {
+            if (isupper(k[i]))
+            {
+                k[i] = (char)(k[i] - 65);
+            } else if (islower(k[i]))
+            {
+                k[i] = (char)(k[i] - 97);
+            } else {
+                fprintf(stderr, "Error: Vigenere cipher is reading a non-alphabetical character");
+            }
+        } else
+        {
+            fprintf(stderr, "Error: Vigenere key has a non-alphabetical character");
+        }
+    }
+
+    return k;
 }

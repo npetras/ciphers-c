@@ -9,14 +9,14 @@ int main( )
 {
     char p[P_MAX];
     char c[P_MAX];
-    int k;
+    char k[10];
 
 
     printf("key: ");
-    scanf(" %d", &k);
+    scanf(" %s", k);
 
 #ifdef DEBUG
-    printf("key = %d\n", k);
+    printf("key = %s\n", k);
 #endif
 
     printf("plaintext: ");
@@ -26,9 +26,7 @@ int main( )
     printf("plaintext = %s\n", p);
 #endif
 
-    strcpy(c, caesar_cipher(p, k));
-
-
+    vigenere_cipher(k, p, c);
     printf("ciphertext: %s", c);
 
     return 0;
